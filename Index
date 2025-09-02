@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Message</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    #container {
+      max-width: 600px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3a3;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h2>Secure Message System</h2>
+    <p>Please answer the security question to access the message:</p>
+    <p><strong>Who is the most handsome/sexiest guy in the world?</strong></p>
+
+    <input type="text" id="answer" placeholder="Your answer here..." />
+    <br>
+    <button onclick="checkAnswer()">Submit</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function normalize(text) {
+      return text.trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function checkAnswer() {
+      const input = document.getElementById("answer").value;
+      const normalized = normalize(input);
+      const message = document.getElementById("message");
+
+      if (normalized === "moebin") {
+        message.style.color = "#0f0";
+        message.innerText = "Great, see you there!";
+      } else {
+        message.style.color = "#f44";
+        message.innerText = "Wrong answer, try again and f off.";
+      }
+    }
+  </script>
+</body>
+</html>
